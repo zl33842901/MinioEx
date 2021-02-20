@@ -3,3 +3,7 @@
 ################################################################################
 
 /.vs/xLiAd.MinioEx
+/xLiAd.MinioEx/bin/Debug
+/xLiAd.MinioEx/obj
+/xLiAd.MinioEx.AspNetCore/bin/Debug/netstandard2.0
+/xLiAd.MinioEx.AspNetCore/obj
