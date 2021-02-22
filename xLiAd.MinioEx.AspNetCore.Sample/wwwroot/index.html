@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>上传</title>
+    <script src="/js/jquery-1.8.3.min.js"></script>
+    <script src="/js/zupload.js"></script>
+</head>
+<body>
+
+    <a href="javascript:;" id="ASf">浏览</a>
+    <div id="DivWait"></div>
+    <input value="上传" type="button" id="BtnU" />
+
+    <div id="DivResult"></div>
+
+    <script type="text/javascript">
+        var ddd = $("#ASf").ZUpload({ //弹出选择文件的钮。
+            fileWaitingContainer: "#DivWait",//待上传的文件名，列在哪里。
+            url: "/Home/Upload",//上传路径
+            params: { mypp : "随便传个参数。"}, //页面参数
+            buttonUpload: "#BtnU",//哪个钮执行上传动作。
+            onSuccess: function (resString) {
+                //成功的方法
+                var res = JSON.parse(resString);
+                console.log(res);
+                if (res.suc) {
+                    alert("成功 ");
+                    var h = "";
+                    for (var i = 0; i < res.path.length; i++) {
+                        h += "<a href='" + res.path[i] + "' target='_blank'>查看</a><br>";
+                    }
+                    $("#DivResult").html(h);
+                }
+                else
+                    alert("失败 " + res.msg);
+            },
+            onFailure: function (res) {
+                //失败的方法
+                alert(res);
+            },
+            funcWhenNoFile: function () { alert("请选择要上传的文件"); },
+            funcWhenExt: function () { alert("文件类型不符合要求"); },
+            funcWhenSize: function () { alert("文件大小不符合要求"); },
+            accept: "image/*,text/plain"
+        });
+    </script>
+
+</body>
+</html>

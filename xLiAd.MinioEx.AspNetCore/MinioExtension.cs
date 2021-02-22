@@ -7,12 +7,16 @@ namespace xLiAd.MinioEx.AspNetCore
 {
     public static class MinioExtension
     {
-        public static IServiceCollection AddMinioEx(this IServiceCollection services, Action<MinioOptions> action)
+        public static IServiceCollection AddMinioEx(this IServiceCollection services, Action<IServiceProvider, MinioOptions> action)
         {
-            MinioOptions options = new MinioOptions();
-            action?.Invoke(options);
-            services.AddSingleton<IMinioEx>(sp => new MinioEx(options.MinioUrl, options.BucketName, options.AccessKey, options.SecretKey,
-                options.ImageProxyUrl, options.DirectoryPolicy));
+            services.AddScoped<IMinioEx>(sp =>
+            {
+                MinioOptions options = new MinioOptions();
+                action?.Invoke(sp, options);
+                var result = new MinioEx(options.MinioUrl, options.BucketName, options.AccessKey, options.SecretKey,
+                    options.ImageProxyUrl, options.DirectoryPolicy);
+                return result;
+            });
             return services;
         }
     }

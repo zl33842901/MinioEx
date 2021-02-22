@@ -7,3 +7,12 @@
 /xLiAd.MinioEx/obj
 /xLiAd.MinioEx.AspNetCore/bin/Debug/netstandard2.0
 /xLiAd.MinioEx.AspNetCore/obj
+/xLiAd.MinioEx/bin/Release
+/xLiAd.MinioEx/nupkgs
+/xLiAd.MinioEx/nupkgsSymb
+/xLiAd.MinioEx.AspNetCore/bin/Release/netstandard2.0
+/xLiAd.MinioEx.AspNetCore/nupkgs
+/xLiAd.MinioEx.AspNetCore/nupkgsSymb
+/xLiAd.MinioEx.AspNetCore.Sample/bin/Debug/netcoreapp3.1
+/xLiAd.MinioEx.AspNetCore.Sample/obj
+/xLiAd.MinioEx.Test/obj
